@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>中年人春节自救指南</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+</head>
+
+<body ontouchmove='return false;' onselectstart='return false' onselect='document.selection.empty()' oncopy='document.selection.empty()' onbeforecopy='return false' >
+<div id="contentdiv">
+    <div id="startdiv">
+        <p class="begin" onclick="begin()"><img src="./image/begin.png"></p>
+    </div>
+    <div id="maindiv">
+        <div id="gaming_border">
+            <img src="./image/gaming_bold_bg.png">
+        </div>
+        <div id="scorediv">
+            <label>游戏得分：</label>
+            <label id="label">0</label>
+        </div>
+        <div id="suspenddiv">
+            <button>继续</button><br/>
+            <button>重新开始</button><br/>
+            <button>回到主页</button>
+        </div>
+        <div id="enddiv">
+            <div onload="choosePic()">
+                <img src="" id="myPicture"></img>
+                <img class="close_img" src="./image/zhaoclose.png" onclick="choseGameMethod()">
+            </div>
+        </div>
+        <div id="downman"></div>
+    </div>
+    <div id="continuediv">
+        <div class="score_coupone">
+            <!-- <p class="get_coupone" onclick="wx.miniProgram.navigateTo({url: '/pages/game/shop'})"><img src="./image/lijilingqu.png" width="100%"></p> -->
+            <p class="get_coupone" id="get_coupone" onclick="getCoupone()"><img src="./image/lijilingqu.png" width="100%"></p>
+            <div class="chose_game_method">
+                <img onclick="jixu()" src="./image/jixuyouxi.png" alt="" width="100%">
+                <img onclick="shareFriend()" src="./image/bufujiaoren.png" alt="" width="100%">
+            </div>
+        </div>
+    </div>
+    <div id="sharefrienddiv">
+        <div id="shadow_modal"></div>
+        <div class="share_img"><img src="./image/share_friend.png" alt=""></div>
+    </div>
+</div>
+<script src="./js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+    <script>
+        $(document).ready(function(){
+            var startdiv = document.getElementById('startdiv')
+            var maindiv = document.getElementById('maindiv')
+            var continuediv = document.getElementById('continuediv')
+            var sharefrienddiv = document.getElementById('sharefrienddiv')
+            if (/iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375) ||  (screen.height == 823 && screen.width == 411)) {
+                //是iphoneX
+                $('#startdiv').css({'background-size':'contain'})
+                $('#maindiv').css({'background-size':'contain'})
+                $('#sharefrienddiv').css({'background-size':'contain'})
+                $('#continuediv').css({'background-size':'contain'})
+                $('#startdiv button').css('top','72%');
+                $('.get_coupone img').css('margin-top','350px');
+            } else {
+            //不是iphoneX
+                $('#startdiv').css({'background-size':'cover'})
+                $('#maindiv').css({'background-size':'cover'})
+                $('#sharefrienddiv').css({'background-size':'cover'})
+                $('#continuediv').css({'background-size':'cover'})
+            }
+        });
+        function getCoupone(){
+            wx.miniProgram.navigateTo({url: '/pages/game/shop'})
+        }
+    </script>
+</div>
+</body>
+</html>
